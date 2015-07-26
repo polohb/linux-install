@@ -28,6 +28,6 @@ function fn_install_chrome {
 }
 
 
-sudo fn_update
-sudo fn_install_essentials
-sudo fn_install_chrome
+fn_update
+fn_install_essentials
+fn_install_chrome
