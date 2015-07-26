@@ -1,4 +1,4 @@
-#♠ Tested on an xubuntu 15-04 install
+# Tested on an xubuntu 15-04 install
 
 @root
 
