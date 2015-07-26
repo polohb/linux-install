@@ -8,6 +8,8 @@
 
 # Get .ssh folder :)
 function fn_get_ssh_files {
+  echo "Never put private key files in a public repo,"
+  echo "so get .ssh files by your own way"
   # you know how to do it ;)
   # never put private key files in a public repo :o
   # So don't do anything via public scripts
