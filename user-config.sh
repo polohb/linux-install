@@ -14,8 +14,8 @@ function fn_get_ssh_files {
 }
 
 # Get dotfiles
-function fn__install_dotfiles {
-  cd
+function fn_install_dotfiles {
+  cd ~/
   git clone https://github.com/polohb/dotfiles.git
   cd dotfiles/scripts
   bash install.sh
@@ -36,7 +36,13 @@ function fn_get_wallpaper {
 
 
 function fn_clean_home {
-  cd
+  cd ~/
   rm -rf Bureau Modèles Musique Public Vidéos
   ln -s Téléchargements downloads
 }
+
+
+fn_clean_home
+fn_install_dotfiles
+fn_configure_git
+fn_get_wallpaper
