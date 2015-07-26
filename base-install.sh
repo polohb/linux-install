@@ -26,3 +26,8 @@ function fn_install_chrome {
   apt-get update
   apt-get install google-chrome-stable
 }
+
+
+sudo fn_update
+sudo fn_install_essentials
+sudo fn_install_chrome
