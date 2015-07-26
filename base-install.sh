@@ -6,7 +6,7 @@
 # Tested on an fresh install of xubuntu 15.04 version
 #
 # This script should be run as root
-# 
+#
 
 function fn_update {
   apt-get udpate -y
@@ -17,7 +17,7 @@ function fn_update {
 
 # essential software
 function fn_install_essentials {
-  apt-get -y install curl git vim screen
+  apt-get -y install curl git vim screen htop
 }
 
 # google-chrome install
