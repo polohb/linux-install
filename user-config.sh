@@ -7,7 +7,7 @@
 #
 
 # Get .ssh folder :)
-function fn_get_ssh_files {
+fn_get_ssh_files() {
   echo "Never put private key files in a public repo,"
   echo "so get .ssh files by your own way"
   # you know how to do it ;)
@@ -16,7 +16,7 @@ function fn_get_ssh_files {
 }
 
 # Get dotfiles
-function fn_install_dotfiles {
+fn_install_dotfiles() {
   cd ~/
   git clone https://github.com/polohb/dotfiles.git
   cd dotfiles/scripts
@@ -24,27 +24,36 @@ function fn_install_dotfiles {
 }
 
 # Configure git
-function fn_configure_git {
+fn_configure_git() {
   git config --global user.name "polohb"
   git config --global user.email "polohb@gmail.com"
 }
 
 
 # Getting motivational-wallpapers
-function fn_get_wallpaper {
+fn_get_wallpaper() {
   cd ~/Images
   git clone git@gitlab.com:polohb/motivational-wallpapers.git
 }
 
 
-function fn_clean_home {
+fn_clean_home() {
   cd ~/
   rm -rf Bureau Modèles Musique Public Vidéos
   ln -s Téléchargements downloads
 }
 
+fn_install_gitprompt(){
+  if [[ ! -d ${HOME}/softs ]]; then
+    mkdir ${HOME}/softs
+  fi
+  cd ${HOME}/softs
+  git clone git@github.com:magicmonty/bash-git-prompt.git
+}
+
 
 fn_clean_home
-fn_install_dotfiles
 fn_configure_git
+fn_install_gitprompt
+fn_install_dotfiles
 fn_get_wallpaper
