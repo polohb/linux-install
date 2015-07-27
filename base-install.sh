@@ -29,6 +29,14 @@ function fn_install_chrome {
 }
 
 
+# sensors
+function fn_install_sensors {
+  apt-get install lm-sensors
+  sensors-detect --auto
+  apt-get install xfce4-sensors-plugin
+}
+
+
 fn_update
 fn_install_essentials
 fn_install_chrome
