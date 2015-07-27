@@ -31,8 +31,10 @@ bash user-config.sh
 It will :
 * delte some folder : Bureau Modèles Musique Public Vidéos
 * link Téléchargements to downloads
+* configure git `user.name` and `user.email`
+* install gitprompt from [magicmonty/bash-git-prompt](git@github.com:magicmonty/bash-git-prompt.git)
+* install gws from [StreakyCobra/gws](git@github.com:StreakyCobra/gws.git)
 * get dotfiles from [polohb/dotfiles](https://github.com/polohb/dotfiles) and install them
-* configure git user.name and user.email
 * install some motivational wallpaper in ~/Images/motivational-wallpapers/
 
 ## Web-development tools
