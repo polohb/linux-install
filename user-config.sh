@@ -44,16 +44,39 @@ fn_clean_home() {
 }
 
 fn_install_gitprompt(){
-  if [[ ! -d ${HOME}/softs ]]; then
-    mkdir ${HOME}/softs
-  fi
-  cd ${HOME}/softs
+  fn_create_folder "${HOME}/softs"
+  cd "${HOME}/softs"
   git clone git@github.com:magicmonty/bash-git-prompt.git
+  cd -
+}
+
+fn_install_gws() {
+  # install gws
+  fn_create_folder "${HOME}/softs"
+  cd "${HOME}/softs"
+  git clone git@github.com:StreakyCobra/gws.git
+  cd -
+
+  # add gws to path
+  fn_create_folder "${HOME}/bin"
+  cd "${HOME}/bin"
+  ln -nsf ${HOME}/softs/gws/src/gws
+  cd -
+}
+
+
+# create folder if it do not exist
+fn_create_folder(){
+  local folder=$1
+  if [[ ! -d ${folder} ]]; then
+    mkdir ${folder}
+  fi
 }
 
 
 fn_clean_home
 fn_configure_git
 fn_install_gitprompt
+fn_install_gws
 fn_install_dotfiles
 fn_get_wallpaper
