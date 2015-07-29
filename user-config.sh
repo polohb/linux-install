@@ -32,7 +32,9 @@ fn_configure_git() {
 
 # Getting motivational-wallpapers
 fn_get_wallpaper() {
-  cd ~/Images
+  cd ~/
+  fn_create_folder "Images"
+  cd Images
   git clone git@gitlab.com:polohb/motivational-wallpapers.git
 }
 
@@ -43,40 +45,55 @@ fn_clean_home() {
   ln -s Téléchargements downloads
 }
 
-fn_install_gitprompt(){
-  fn_create_folder "${HOME}/softs"
-  cd "${HOME}/softs"
+fn_install_gitprompt() {
+  local softsFolder=$1
+
+  fn_create_folder "${softsFolder}"
+  cd "${softsFolder}"
   git clone git@github.com:magicmonty/bash-git-prompt.git
   cd -
+
+  # already configured in bashrc file from dotfiles install
 }
 
 fn_install_gws() {
+  local softsFolder=$1
   # install gws
-  fn_create_folder "${HOME}/softs"
-  cd "${HOME}/softs"
+  fn_create_folder "${softsFolder}"
+  cd "${softsFolder}"
   git clone git@github.com:StreakyCobra/gws.git
   cd -
 
   # add gws to path
   fn_create_folder "${HOME}/bin"
   cd "${HOME}/bin"
-  ln -nsf ${HOME}/softs/gws/src/gws
+  ln -nsf ${softsFolder}/gws/src/gws
   cd -
 }
 
 
-# create folder if it do not exist
 fn_create_folder(){
   local folder=$1
-  if [[ ! -d ${folder} ]]; then
+  # if file with same name exist and is not a folder cpy it
+  if [[ -e "${folder}" && ! -d "${folder}" ]]; then
+    mv ${folder} ${folder}.cpy
+  fi
+
+  # if folder do not exist create it
+  if [[ ! -e "${folder}" ]]; then
     mkdir ${folder}
   fi
 }
+main(){
+
+  local softInstallFolder=${HOME}/softs;
+
+  fn_clean_home
+  fn_configure_git
+  fn_install_gitprompt ${softInstallFolder}
+  fn_install_gws ${softInstallFolder}
+  fn_install_dotfiles
+  fn_get_wallpaper
 
 
-fn_clean_home
-fn_configure_git
-fn_install_gitprompt
-fn_install_gws
-fn_install_dotfiles
-fn_get_wallpaper
+}
