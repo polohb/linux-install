@@ -50,7 +50,7 @@ fn_install_gitprompt() {
 
   fn_create_folder "${softsFolder}"
   cd "${softsFolder}"
-  git clone git@github.com:magicmonty/bash-git-prompt.git
+  git clone https://github.com/magicmonty/bash-git-prompt.git
   cd -
 
   # already configured in bashrc file from dotfiles install
@@ -61,7 +61,7 @@ fn_install_gws() {
   # install gws
   fn_create_folder "${softsFolder}"
   cd "${softsFolder}"
-  git clone git@github.com:StreakyCobra/gws.git
+  git clone https://github.com/StreakyCobra/gws.git
   cd -
 
   # add gws to path
