@@ -15,10 +15,16 @@ fn_install_atom() {
   sudo apt-get -y install atom
 }
 
-# nodejs and npm
-fn_install_nodejs() {
-  curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -
-  sudo apt-get install --yes nodejs
+
+# This will install nvm node and npm
+fn_install_nvm(){
+    git clone https://github.com/creationix/nvm.git ~/.nvm 
+    cd ~/.nvm 
+    git checkout `git describe --abbrev=0 --tags`
+    . ~/.nvm/nvm.sh
+    nvm install 0.12.7
+    nvm alias default 0.12.7
+    nvm use default
 }
 
 
@@ -28,11 +34,6 @@ fn_install_meteor() {
   curl https://install.meteor.com/ | sh
 }
 
-fn_to_do() {
-  # Need to do this one time to be able to use npm
-  # TODO : find when and why
-  sudo chown -R $USER ~/.npm/
-}
 
 # Getting atom packages
 fn_get_atom_plugin() {
@@ -41,10 +42,14 @@ fn_get_atom_plugin() {
 
 main(){
   # root install
-  fn_install_nodejs
+  fn_install_nvm
   fn_install_atom
 
   #user install
   fn_get_atom_plugin
-  fn_install_meteor
+  #fn_install_meteor
 }
+
+
+main
+
